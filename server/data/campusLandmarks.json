@@ -1,0 +1,16 @@
+{
+  "landmarks": [
+    { "label": "Main Auditorium", "latitude": 12.9716, "longitude": 80.0424 },
+    { "label": "Central Library", "latitude": 12.9720, "longitude": 80.0430 },
+    { "label": "Technology Tower", "latitude": 12.9710, "longitude": 80.0418 },
+    { "label": "Sports Complex", "latitude": 12.9725, "longitude": 80.0410 },
+    { "label": "Cafeteria", "latitude": 12.9712, "longitude": 80.0435 },
+    { "label": "Admin Block", "latitude": 12.9718, "longitude": 80.0422 },
+    { "label": "Lab Block A", "latitude": 12.9714, "longitude": 80.0426 },
+    { "label": "Lab Block B", "latitude": 12.9708, "longitude": 80.0428 },
+    { "label": "Seminar Hall", "latitude": 12.9722, "longitude": 80.0420 },
+    { "label": "Hostel Block", "latitude": 12.9730, "longitude": 80.0415 },
+    { "label": "Main Gate", "latitude": 12.9705, "longitude": 80.0440 },
+    { "label": "Parking Area", "latitude": 12.9702, "longitude": 80.0438 }
+  ]
+}
