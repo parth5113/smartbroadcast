@@ -52,8 +52,7 @@ router.post('/register', authLimiter, validate(registerSchema), async (req, res)
     const refreshToken = generateRefreshToken(user._id);
 
     // Store refresh token in DB for revocation
-    user.refreshToken = refreshToken;
-    await user.save();
+    await User.findByIdAndUpdate(user._id, { refreshToken });
 
     setRefreshCookie(res, refreshToken);
 
@@ -86,8 +85,7 @@ router.post('/login', authLimiter, validate(loginSchema), async (req, res) => {
     const accessToken = generateAccessToken(user._id);
     const refreshToken = generateRefreshToken(user._id);
 
-    user.refreshToken = refreshToken;
-    await user.save();
+    await User.findByIdAndUpdate(user._id, { refreshToken });
 
     setRefreshCookie(res, refreshToken);
 
@@ -124,8 +122,7 @@ router.post('/refresh', async (req, res) => {
     const newAccessToken = generateAccessToken(user._id);
     const newRefreshToken = generateRefreshToken(user._id);
 
-    user.refreshToken = newRefreshToken;
-    await user.save();
+    await User.findByIdAndUpdate(user._id, { refreshToken: newRefreshToken });
 
     setRefreshCookie(res, newRefreshToken);
 
