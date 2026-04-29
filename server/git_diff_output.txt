@@ -1,0 +1,1499 @@
+commit 02de4f999d9e4285b42d50061c94d26c6d9dc00f
+Author: Parth <parth@smartcast.dev>
+Date:   Mon Apr 27 12:25:20 2026 +0530
+
+    chore: force trigger redeployment after revert
+
+commit dd4624379583d4a976a95a5f6aeb4421aadb8921
+Author: Parth <parth@smartcast.dev>
+Date:   Mon Apr 27 11:35:31 2026 +0530
+
+    fix: update postcss config for tailwindcss v4
+
+diff --git a/client/package-lock.json b/client/package-lock.json
+index 0cb3b12..b87074d 100644
+--- a/client/package-lock.json
++++ b/client/package-lock.json
+@@ -18,6 +18,7 @@
+         "socket.io-client": "^4.8.3"
+       },
+       "devDependencies": {
++        "@tailwindcss/postcss": "^4.2.4",
+         "@vitejs/plugin-react": "^6.0.1",
+         "autoprefixer": "^10.5.0",
+         "leaflet": "^1.9.4",
+@@ -28,6 +29,19 @@
+         "vite": "^8.0.10"
+       }
+     },
++    "node_modules/@alloc/quick-lru": {
++      "version": "5.2.0",
++      "resolved": "https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz",
++      "integrity": "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=10"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
+     "node_modules/@emnapi/core": {
+       "version": "1.10.0",
+       "resolved": "https://registry.npmjs.org/@emnapi/core/-/core-1.10.0.tgz",
+@@ -62,6 +76,56 @@
+         "tslib": "^2.4.0"
+       }
+     },
++    "node_modules/@jridgewell/gen-mapping": {
++      "version": "0.3.13",
++      "resolved": "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.13.tgz",
++      "integrity": "sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@jridgewell/sourcemap-codec": "^1.5.0",
++        "@jridgewell/trace-mapping": "^0.3.24"
++      }
++    },
++    "node_modules/@jridgewell/remapping": {
++      "version": "2.3.5",
++      "resolved": "https://registry.npmjs.org/@jridgewell/remapping/-/remapping-2.3.5.tgz",
++      "integrity": "sha512-LI9u/+laYG4Ds1TDKSJW2YPrIlcVYOwi2fUC6xB43lueCjgxV4lffOCZCtYFiH6TNOX+tQKXx97T4IKHbhyHEQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@jridgewell/gen-mapping": "^0.3.5",
++        "@jridgewell/trace-mapping": "^0.3.24"
++      }
++    },
++    "node_modules/@jridgewell/resolve-uri": {
++      "version": "3.1.2",
++      "resolved": "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz",
++      "integrity": "sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=6.0.0"
++      }
++    },
++    "node_modules/@jridgewell/sourcemap-codec": {
++      "version": "1.5.5",
++      "resolved": "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz",
++      "integrity": "sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/@jridgewell/trace-mapping": {
++      "version": "0.3.31",
++      "resolved": "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz",
++      "integrity": "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@jridgewell/resolve-uri": "^3.1.0",
++        "@jridgewell/sourcemap-codec": "^1.4.14"
++      }
++    },
+     "node_modules/@napi-rs/wasm-runtime": {
+       "version": "1.1.4",
+       "resolved": "https://registry.npmjs.org/@napi-rs/wasm-runtime/-/wasm-runtime-1.1.4.tgz",
+@@ -439,6 +503,289 @@
+       "integrity": "sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==",
+       "license": "MIT"
+     },
++    "node_modules/@tailwindcss/node": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/node/-/node-4.2.4.tgz",
++      "integrity": "sha512-Ai7+yQPxz3ddrDQzFfBKdHEVBg0w3Zl83jnjuwxnZOsnH9pGn93QHQtpU0p/8rYWxvbFZHneni6p1BSLK4DkGA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@jridgewell/remapping": "^2.3.5",
++        "enhanced-resolve": "^5.19.0",
++        "jiti": "^2.6.1",
++        "lightningcss": "1.32.0",
++        "magic-string": "^0.30.21",
++        "source-map-js": "^1.2.1",
++        "tailwindcss": "4.2.4"
++      }
++    },
++    "node_modules/@tailwindcss/oxide": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide/-/oxide-4.2.4.tgz",
++      "integrity": "sha512-9El/iI069DKDSXwTvB9J4BwdO5JhRrOweGaK25taBAvBXyXqJAX+Jqdvs8r8gKpsI/1m0LeJLyQYTf/WLrBT1Q==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 20"
++      },
++      "optionalDependencies": {
++        "@tailwindcss/oxide-android-arm64": "4.2.4",
++        "@tailwindcss/oxide-darwin-arm64": "4.2.4",
++        "@tailwindcss/oxide-darwin-x64": "4.2.4",
++        "@tailwindcss/oxide-freebsd-x64": "4.2.4",
++        "@tailwindcss/oxide-linux-arm-gnueabihf": "4.2.4",
++        "@tailwindcss/oxide-linux-arm64-gnu": "4.2.4",
++        "@tailwindcss/oxide-linux-arm64-musl": "4.2.4",
++        "@tailwindcss/oxide-linux-x64-gnu": "4.2.4",
++        "@tailwindcss/oxide-linux-x64-musl": "4.2.4",
++        "@tailwindcss/oxide-wasm32-wasi": "4.2.4",
++        "@tailwindcss/oxide-win32-arm64-msvc": "4.2.4",
++        "@tailwindcss/oxide-win32-x64-msvc": "4.2.4"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-android-arm64": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-android-arm64/-/oxide-android-arm64-4.2.4.tgz",
++      "integrity": "sha512-e7MOr1SAn9U8KlZzPi1ZXGZHeC5anY36qjNwmZv9pOJ8E4Q6jmD1vyEHkQFmNOIN7twGPEMXRHmitN4zCMN03g==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-darwin-arm64": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-darwin-arm64/-/oxide-darwin-arm64-4.2.4.tgz",
++      "integrity": "sha512-tSC/Kbqpz/5/o/C2sG7QvOxAKqyd10bq+ypZNf+9Fi2TvbVbv1zNpcEptcsU7DPROaSbVgUXmrzKhurFvo5eDg==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-darwin-x64": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-darwin-x64/-/oxide-darwin-x64-4.2.4.tgz",
++      "integrity": "sha512-yPyUXn3yO/ufR6+Kzv0t4fCg2qNr90jxXc5QqBpjlPNd0NqyDXcmQb/6weunH/MEDXW5dhyEi+agTDiqa3WsGg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-freebsd-x64": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-freebsd-x64/-/oxide-freebsd-x64-4.2.4.tgz",
++      "integrity": "sha512-BoMIB4vMQtZsXdGLVc2z+P9DbETkiopogfWZKbWwM8b/1Vinbs4YcUwo+kM/KeLkX3Ygrf4/PsRndKaYhS8Eiw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-linux-arm-gnueabihf": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-linux-arm-gnueabihf/-/oxide-linux-arm-gnueabihf-4.2.4.tgz",
++      "integrity": "sha512-7pIHBLTHYRAlS7V22JNuTh33yLH4VElwKtB3bwchK/UaKUPpQ0lPQiOWcbm4V3WP2I6fNIJ23vABIvoy2izdwA==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-linux-arm64-gnu": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-linux-arm64-gnu/-/oxide-linux-arm64-gnu-4.2.4.tgz",
++      "integrity": "sha512-+E4wxJ0ZGOzSH325reXTWB48l42i93kQqMvDyz5gqfRzRZ7faNhnmvlV4EPGJU3QJM/3Ab5jhJ5pCRUsKn6OQw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "libc": [
++        "glibc"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-linux-arm64-musl": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-linux-arm64-musl/-/oxide-linux-arm64-musl-4.2.4.tgz",
++      "integrity": "sha512-bBADEGAbo4ASnppIziaQJelekCxdMaxisrk+fB7Thit72IBnALp9K6ffA2G4ruj90G9XRS2VQ6q2bCKbfFV82g==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "libc": [
++        "musl"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-linux-x64-gnu": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-linux-x64-gnu/-/oxide-linux-x64-gnu-4.2.4.tgz",
++      "integrity": "sha512-7Mx25E4WTfnht0TVRTyC00j3i0M+EeFe7wguMDTlX4mRxafznw0CA8WJkFjWYH5BlgELd1kSjuU2JiPnNZbJDA==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "libc": [
++        "glibc"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-linux-x64-musl": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-linux-x64-musl/-/oxide-linux-x64-musl-4.2.4.tgz",
++      "integrity": "sha512-2wwJRF7nyhOR0hhHoChc04xngV3iS+akccHTGtz965FwF0up4b2lOdo6kI1EbDaEXKgvcrFBYcYQQ/rrnWFVfA==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "libc": [
++        "musl"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-wasm32-wasi": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.2.4.tgz",
++      "integrity": "sha512-FQsqApeor8Fo6gUEklzmaa9994orJZZDBAlQpK2Mq+DslRKFJeD6AjHpBQ0kZFQohVr8o85PPh8eOy86VlSCmw==",
++      "bundleDependencies": [
++        "@napi-rs/wasm-runtime",
++        "@emnapi/core",
++        "@emnapi/runtime",
++        "@tybys/wasm-util",
++        "@emnapi/wasi-threads",
++        "tslib"
++      ],
++      "cpu": [
++        "wasm32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "dependencies": {
++        "@emnapi/core": "^1.8.1",
++        "@emnapi/runtime": "^1.8.1",
++        "@emnapi/wasi-threads": "^1.1.0",
++        "@napi-rs/wasm-runtime": "^1.1.1",
++        "@tybys/wasm-util": "^0.10.1",
++        "tslib": "^2.8.1"
++      },
++      "engines": {
++        "node": ">=14.0.0"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-win32-arm64-msvc": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-win32-arm64-msvc/-/oxide-win32-arm64-msvc-4.2.4.tgz",
++      "integrity": "sha512-L9BXqxC4ToVgwMFqj3pmZRqyHEztulpUJzCxUtLjobMCzTPsGt1Fa9enKbOpY2iIyVtaHNeNvAK8ERP/64sqGQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/oxide-win32-x64-msvc": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/oxide-win32-x64-msvc/-/oxide-win32-x64-msvc-4.2.4.tgz",
++      "integrity": "sha512-ESlKG0EpVJQwRjXDDa9rLvhEAh0mhP1sF7sap9dNZT0yyl9SAG6T7gdP09EH0vIv0UNTlo6jPWyujD6559fZvw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">= 20"
++      }
++    },
++    "node_modules/@tailwindcss/postcss": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/@tailwindcss/postcss/-/postcss-4.2.4.tgz",
++      "integrity": "sha512-wgAVj6nUWAolAu8YFvzT2cTBIElWHkjZwFYovF+xsqKsW2ADxM/X2opxj5NsF/qVccAOjRNe8X2IdPzMsWyHTg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@alloc/quick-lru": "^5.2.0",
++        "@tailwindcss/node": "4.2.4",
++        "@tailwindcss/oxide": "4.2.4",
++        "postcss": "^8.5.6",
++        "tailwindcss": "4.2.4"
++      }
++    },
+     "node_modules/@tybys/wasm-util": {
+       "version": "0.10.1",
+       "resolved": "https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.1.tgz",
+@@ -933,6 +1280,20 @@
+         "node": ">=10.0.0"
+       }
+     },
++    "node_modules/enhanced-resolve": {
++      "version": "5.21.0",
++      "resolved": "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.21.0.tgz",
++      "integrity": "sha512-otxSQPw4lkOZWkHpB3zaEQs6gWYEsmX4xQF68ElXC/TWvGxGMSGOvoNbaLXm6/cS/fSfHtsEdw90y20PCd+sCA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "graceful-fs": "^4.2.4",
++        "tapable": "^2.3.3"
++      },
++      "engines": {
++        "node": ">=10.13.0"
++      }
++    },
+     "node_modules/es-define-property": {
+       "version": "1.0.1",
+       "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.1.tgz",
+@@ -1154,6 +1515,13 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/graceful-fs": {
++      "version": "4.2.11",
++      "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz",
++      "integrity": "sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==",
++      "dev": true,
++      "license": "ISC"
++    },
+     "node_modules/has-symbols": {
+       "version": "1.1.0",
+       "resolved": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.1.0.tgz",
+@@ -1212,6 +1580,16 @@
+         "node": ">=12"
+       }
+     },
++    "node_modules/jiti": {
++      "version": "2.6.1",
++      "resolved": "https://registry.npmjs.org/jiti/-/jiti-2.6.1.tgz",
++      "integrity": "sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==",
++      "dev": true,
++      "license": "MIT",
++      "bin": {
++        "jiti": "lib/jiti-cli.mjs"
++      }
++    },
+     "node_modules/leaflet": {
+       "version": "1.9.4",
+       "resolved": "https://registry.npmjs.org/leaflet/-/leaflet-1.9.4.tgz",
+@@ -1502,6 +1880,16 @@
+         "react": "^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+       }
+     },
++    "node_modules/magic-string": {
++      "version": "0.30.21",
++      "resolved": "https://registry.npmjs.org/magic-string/-/magic-string-0.30.21.tgz",
++      "integrity": "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@jridgewell/sourcemap-codec": "^1.5.5"
++      }
++    },
+     "node_modules/math-intrinsics": {
+       "version": "1.1.0",
+       "resolved": "https://registry.npmjs.org/math-intrinsics/-/math-intrinsics-1.1.0.tgz",
+@@ -1901,6 +2289,20 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/tapable": {
++      "version": "2.3.3",
++      "resolved": "https://registry.npmjs.org/tapable/-/tapable-2.3.3.tgz",
++      "integrity": "sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=6"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/webpack"
++      }
++    },
+     "node_modules/tiny-invariant": {
+       "version": "1.3.3",
+       "resolved": "https://registry.npmjs.org/tiny-invariant/-/tiny-invariant-1.3.3.tgz",
+diff --git a/client/package.json b/client/package.json
+index c7f3be4..0e8ff9c 100644
+--- a/client/package.json
++++ b/client/package.json
+@@ -9,6 +9,7 @@
+     "preview": "vite preview"
+   },
+   "devDependencies": {
++    "@tailwindcss/postcss": "^4.2.4",
+     "@vitejs/plugin-react": "^6.0.1",
+     "autoprefixer": "^10.5.0",
+     "leaflet": "^1.9.4",
+diff --git a/client/postcss.config.js b/client/postcss.config.js
+index 2e7af2b..14502dc 100644
+--- a/client/postcss.config.js
++++ b/client/postcss.config.js
+@@ -1,6 +1,6 @@
+ export default {
+   plugins: {
+-    tailwindcss: {},
++    "@tailwindcss/postcss": {},
+     autoprefixer: {},
+   },
+ }
+diff --git a/client/src/index.css b/client/src/index.css
+index b61b059..3fad637 100644
+--- a/client/src/index.css
++++ b/client/src/index.css
+@@ -1,6 +1,4 @@
+-@tailwind base;
+-@tailwind components;
+-@tailwind utilities;
++@import "tailwindcss";
+ 
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+ :root {
+
+commit ba82b3b352e9f338f598a25b54574e231502531f
+Author: Parth <parth@smartcast.dev>
+Date:   Mon Apr 27 11:28:38 2026 +0530
+
+    feat: real-time audience tracking, simulation, and maps
+
+diff --git a/client/package-lock.json b/client/package-lock.json
+index c78cf0a..0cb3b12 100644
+--- a/client/package-lock.json
++++ b/client/package-lock.json
+@@ -19,6 +19,12 @@
+       },
+       "devDependencies": {
+         "@vitejs/plugin-react": "^6.0.1",
++        "autoprefixer": "^10.5.0",
++        "leaflet": "^1.9.4",
++        "lucide-react": "^1.11.0",
++        "postcss": "^8.5.12",
++        "react-leaflet": "^5.0.0",
++        "tailwindcss": "^4.2.4",
+         "vite": "^8.0.10"
+       }
+     },
+@@ -85,6 +91,18 @@
+         "url": "https://github.com/sponsors/Boshen"
+       }
+     },
++    "node_modules/@react-leaflet/core": {
++      "version": "3.0.0",
++      "resolved": "https://registry.npmjs.org/@react-leaflet/core/-/core-3.0.0.tgz",
++      "integrity": "sha512-3EWmekh4Nz+pGcr+xjf0KNyYfC3U2JjnkWsh0zcqaexYqmmB5ZhH37kz41JXGmKzpaMZCnPofBBm64i+YrEvGQ==",
++      "dev": true,
++      "license": "Hippocratic-2.1",
++      "peerDependencies": {
++        "leaflet": "^1.9.0",
++        "react": "^19.0.0",
++        "react-dom": "^19.0.0"
++      }
++    },
+     "node_modules/@reduxjs/toolkit": {
+       "version": "2.11.2",
+       "resolved": "https://registry.npmjs.org/@reduxjs/toolkit/-/toolkit-2.11.2.tgz",
+@@ -540,6 +558,43 @@
+       "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==",
+       "license": "MIT"
+     },
++    "node_modules/autoprefixer": {
++      "version": "10.5.0",
++      "resolved": "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.5.0.tgz",
++      "integrity": "sha512-FMhOoZV4+qR6aTUALKX2rEqGG+oyATvwBt9IIzVR5rMa2HRWPkxf+P+PAJLD1I/H5/II+HuZcBJYEFBpq39ong==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/postcss/"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/autoprefixer"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "browserslist": "^4.28.2",
++        "caniuse-lite": "^1.0.30001787",
++        "fraction.js": "^5.3.4",
++        "picocolors": "^1.1.1",
++        "postcss-value-parser": "^4.2.0"
++      },
++      "bin": {
++        "autoprefixer": "bin/autoprefixer"
++      },
++      "engines": {
++        "node": "^10 || ^12 || >=14"
++      },
++      "peerDependencies": {
++        "postcss": "^8.1.0"
++      }
++    },
+     "node_modules/axios": {
+       "version": "1.15.2",
+       "resolved": "https://registry.npmjs.org/axios/-/axios-1.15.2.tgz",
+@@ -551,6 +606,53 @@
+         "proxy-from-env": "^2.1.0"
+       }
+     },
++    "node_modules/baseline-browser-mapping": {
++      "version": "2.10.23",
++      "resolved": "https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.10.23.tgz",
++      "integrity": "sha512-xwVXGqevyKPsiuQdLj+dZMVjidjJV508TBqexND5HrF89cGdCYCJFB3qhcxRHSeMctdCfbR1jrxBajhDy7o29g==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "bin": {
++        "baseline-browser-mapping": "dist/cli.cjs"
++      },
++      "engines": {
++        "node": ">=6.0.0"
++      }
++    },
++    "node_modules/browserslist": {
++      "version": "4.28.2",
++      "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-4.28.2.tgz",
++      "integrity": "sha512-48xSriZYYg+8qXna9kwqjIVzuQxi+KYWp2+5nCYnYKPTr0LvD89Jqk2Or5ogxz0NUMfIjhh2lIUX/LyX9B4oIg==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/browserslist"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/browserslist"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "baseline-browser-mapping": "^2.10.12",
++        "caniuse-lite": "^1.0.30001782",
++        "electron-to-chromium": "^1.5.328",
++        "node-releases": "^2.0.36",
++        "update-browserslist-db": "^1.2.3"
++      },
++      "bin": {
++        "browserslist": "cli.js"
++      },
++      "engines": {
++        "node": "^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7"
++      }
++    },
+     "node_modules/call-bind-apply-helpers": {
+       "version": "1.0.2",
+       "resolved": "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz",
+@@ -564,6 +666,27 @@
+         "node": ">= 0.4"
+       }
+     },
++    "node_modules/caniuse-lite": {
++      "version": "1.0.30001791",
++      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001791.tgz",
++      "integrity": "sha512-yk0l/YSrOnFZk3UROpDLQD9+kC1l4meK/wed583AXrzoarMGJcbRi2Q4RaUYbKxYAsZ8sWmaSa/DsLmdBeI1vQ==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/browserslist"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/caniuse-lite"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "CC-BY-4.0"
++    },
+     "node_modules/clsx": {
+       "version": "2.1.1",
+       "resolved": "https://registry.npmjs.org/clsx/-/clsx-2.1.1.tgz",
+@@ -781,6 +904,13 @@
+         "node": ">= 0.4"
+       }
+     },
++    "node_modules/electron-to-chromium": {
++      "version": "1.5.344",
++      "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.344.tgz",
++      "integrity": "sha512-4MxfbmNDm+KPh066EZy+eUnkcDPcZ35wNmOWzFuh/ijvHsve6kbLTLURy88uCNK5FbpN+yk2nQY6BYh1GEt+wg==",
++      "dev": true,
++      "license": "ISC"
++    },
+     "node_modules/engine.io-client": {
+       "version": "6.6.4",
+       "resolved": "https://registry.npmjs.org/engine.io-client/-/engine.io-client-6.6.4.tgz",
+@@ -858,6 +988,16 @@
+         "benchmarks"
+       ]
+     },
++    "node_modules/escalade": {
++      "version": "3.2.0",
++      "resolved": "https://registry.npmjs.org/escalade/-/escalade-3.2.0.tgz",
++      "integrity": "sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=6"
++      }
++    },
+     "node_modules/eventemitter3": {
+       "version": "5.0.4",
+       "resolved": "https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.4.tgz",
+@@ -918,6 +1058,20 @@
+         "node": ">= 6"
+       }
+     },
++    "node_modules/fraction.js": {
++      "version": "5.3.4",
++      "resolved": "https://registry.npmjs.org/fraction.js/-/fraction.js-5.3.4.tgz",
++      "integrity": "sha512-1X1NTtiJphryn/uLQz3whtY6jK3fTqoE3ohKs0tT+Ujr1W59oopxmoEh7Lu5p6vBaPbgoM0bzveAW4Qi5RyWDQ==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": "*"
++      },
++      "funding": {
++        "type": "github",
++        "url": "https://github.com/sponsors/rawify"
++      }
++    },
+     "node_modules/fsevents": {
+       "version": "2.3.3",
+       "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
+@@ -1058,6 +1212,13 @@
+         "node": ">=12"
+       }
+     },
++    "node_modules/leaflet": {
++      "version": "1.9.4",
++      "resolved": "https://registry.npmjs.org/leaflet/-/leaflet-1.9.4.tgz",
++      "integrity": "sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==",
++      "dev": true,
++      "license": "BSD-2-Clause"
++    },
+     "node_modules/lightningcss": {
+       "version": "1.32.0",
+       "resolved": "https://registry.npmjs.org/lightningcss/-/lightningcss-1.32.0.tgz",
+@@ -1331,6 +1492,16 @@
+         "url": "https://opencollective.com/parcel"
+       }
+     },
++    "node_modules/lucide-react": {
++      "version": "1.11.0",
++      "resolved": "https://registry.npmjs.org/lucide-react/-/lucide-react-1.11.0.tgz",
++      "integrity": "sha512-UOhjdztXCgdBReRcIhsvz2siIBogfv/lhJEIViCpLt924dO+GDms9T7DNoucI23s6kEPpe988m5N0D2ajnzb2g==",
++      "dev": true,
++      "license": "ISC",
++      "peerDependencies": {
++        "react": "^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0"
++      }
++    },
+     "node_modules/math-intrinsics": {
+       "version": "1.1.0",
+       "resolved": "https://registry.npmjs.org/math-intrinsics/-/math-intrinsics-1.1.0.tgz",
+@@ -1386,6 +1557,13 @@
+         "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
+       }
+     },
++    "node_modules/node-releases": {
++      "version": "2.0.38",
++      "resolved": "https://registry.npmjs.org/node-releases/-/node-releases-2.0.38.tgz",
++      "integrity": "sha512-3qT/88Y3FbH/Kx4szpQQ4HzUbVrHPKTLVpVocKiLfoYvw9XSGOX2FmD2d6DrXbVYyAQTF2HeF6My8jmzx7/CRw==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/picocolors": {
+       "version": "1.1.1",
+       "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
+@@ -1407,9 +1585,9 @@
+       }
+     },
+     "node_modules/postcss": {
+-      "version": "8.5.10",
+-      "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.10.tgz",
+-      "integrity": "sha512-pMMHxBOZKFU6HgAZ4eyGnwXF/EvPGGqUr0MnZ5+99485wwW41kW91A4LOGxSHhgugZmSChL5AlElNdwlNgcnLQ==",
++      "version": "8.5.12",
++      "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.12.tgz",
++      "integrity": "sha512-W62t/Se6rA0Az3DfCL0AqJwXuKwBeYg6nOaIgzP+xZ7N5BFCI7DYi1qs6ygUYT6rvfi6t9k65UMLJC+PHZpDAA==",
+       "dev": true,
+       "funding": [
+         {
+@@ -1435,6 +1613,13 @@
+         "node": "^10 || ^12 || >=14"
+       }
+     },
++    "node_modules/postcss-value-parser": {
++      "version": "4.2.0",
++      "resolved": "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz",
++      "integrity": "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/proxy-from-env": {
+       "version": "2.1.0",
+       "resolved": "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-2.1.0.tgz",
+@@ -1498,6 +1683,21 @@
+       "license": "MIT",
+       "peer": true
+     },
++    "node_modules/react-leaflet": {
++      "version": "5.0.0",
++      "resolved": "https://registry.npmjs.org/react-leaflet/-/react-leaflet-5.0.0.tgz",
++      "integrity": "sha512-CWbTpr5vcHw5bt9i4zSlPEVQdTVcML390TjeDG0cK59z1ylexpqC6M1PJFjV8jD7CF+ACBFsLIDs6DRMoLEofw==",
++      "dev": true,
++      "license": "Hippocratic-2.1",
++      "dependencies": {
++        "@react-leaflet/core": "^3.0.0"
++      },
++      "peerDependencies": {
++        "leaflet": "^1.9.0",
++        "react": "^19.0.0",
++        "react-dom": "^19.0.0"
++      }
++    },
+     "node_modules/react-redux": {
+       "version": "9.2.0",
+       "resolved": "https://registry.npmjs.org/react-redux/-/react-redux-9.2.0.tgz",
+@@ -1694,6 +1894,13 @@
+         "node": ">=0.10.0"
+       }
+     },
++    "node_modules/tailwindcss": {
++      "version": "4.2.4",
++      "resolved": "https://registry.npmjs.org/tailwindcss/-/tailwindcss-4.2.4.tgz",
++      "integrity": "sha512-HhKppgO81FQof5m6TEnuBWCZGgfRAWbaeOaGT00KOy/Pf/j6oUihdvBpA7ltCeAvZpFhW3j0PTclkxsd4IXYDA==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/tiny-invariant": {
+       "version": "1.3.3",
+       "resolved": "https://registry.npmjs.org/tiny-invariant/-/tiny-invariant-1.3.3.tgz",
+@@ -1725,6 +1932,37 @@
+       "license": "0BSD",
+       "optional": true
+     },
++    "node_modules/update-browserslist-db": {
++      "version": "1.2.3",
++      "resolved": "https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.2.3.tgz",
++      "integrity": "sha512-Js0m9cx+qOgDxo0eMiFGEueWztz+d4+M3rGlmKPT+T4IS/jP4ylw3Nwpu6cpTTP8R1MAC1kF4VbdLt3ARf209w==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/browserslist"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/browserslist"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "escalade": "^3.2.0",
++        "picocolors": "^1.1.1"
++      },
++      "bin": {
++        "update-browserslist-db": "cli.js"
++      },
++      "peerDependencies": {
++        "browserslist": ">= 4.21.0"
++      }
++    },
+     "node_modules/use-sync-external-store": {
+       "version": "1.6.0",
+       "resolved": "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.6.0.tgz",
+diff --git a/client/package.json b/client/package.json
+index f4cdde5..c7f3be4 100644
+--- a/client/package.json
++++ b/client/package.json
+@@ -10,6 +10,12 @@
+   },
+   "devDependencies": {
+     "@vitejs/plugin-react": "^6.0.1",
++    "autoprefixer": "^10.5.0",
++    "leaflet": "^1.9.4",
++    "lucide-react": "^1.11.0",
++    "postcss": "^8.5.12",
++    "react-leaflet": "^5.0.0",
++    "tailwindcss": "^4.2.4",
+     "vite": "^8.0.10"
+   },
+   "dependencies": {
+diff --git a/client/postcss.config.js b/client/postcss.config.js
+new file mode 100644
+index 0000000..2e7af2b
+--- /dev/null
++++ b/client/postcss.config.js
+@@ -0,0 +1,6 @@
++export default {
++  plugins: {
++    tailwindcss: {},
++    autoprefixer: {},
++  },
++}
+diff --git a/client/src/components/realtime/AnalyticsDashboard.jsx b/client/src/components/realtime/AnalyticsDashboard.jsx
+new file mode 100644
+index 0000000..1af7d1e
+--- /dev/null
++++ b/client/src/components/realtime/AnalyticsDashboard.jsx
+@@ -0,0 +1,54 @@
++import React, { useMemo } from 'react';
++import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
++
++export const AnalyticsDashboard = ({ historyData, currentCount }) => {
++  // historyData: [{ time: '10:00', count: 12 }, { time: '10:01', count: 15 }]
++  const peak = useMemo(() => Math.max(...historyData.map(d => d.count), 0), [historyData]);
++
++  return (
++    <div className="card w-full mt-4">
++      <div className="card-header">
++        <h3 className="card-title text-xl text-[var(--accent-primary)]">Real-time Analytics</h3>
++      </div>
++      <div className="stats-grid mb-6">
++        <div className="stat-card">
++          <div className="stat-icon purple">
++            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
++          </div>
++          <div>
++            <div className="stat-value">{currentCount}</div>
++            <div className="stat-label">Concurrent Viewers</div>
++          </div>
++        </div>
++        <div className="stat-card">
++          <div className="stat-icon orange">
++            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
++          </div>
++          <div>
++            <div className="stat-value">{peak}</div>
++            <div className="stat-label">Peak Count</div>
++          </div>
++        </div>
++      </div>
++      <div className="h-64 w-full">
++        <ResponsiveContainer width="100%" height="100%">
++          <AreaChart data={historyData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
++            <defs>
++              <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
++                <stop offset="5%" stopColor="var(--accent-primary)" stopOpacity={0.8}/>
++                <stop offset="95%" stopColor="var(--accent-primary)" stopOpacity={0}/>
++              </linearGradient>
++            </defs>
++            <XAxis dataKey="time" stroke="var(--text-muted)" fontSize={12} tickLine={false} axisLine={false} />
++            <YAxis stroke="var(--text-muted)" fontSize={12} tickLine={false} axisLine={false} />
++            <Tooltip 
++              contentStyle={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', borderRadius: '8px' }}
++              itemStyle={{ color: 'var(--text-primary)' }}
++            />
++            <Area type="monotone" dataKey="count" stroke="var(--accent-primary)" fillOpacity={1} fill="url(#colorCount)" />
++          </AreaChart>
++        </ResponsiveContainer>
++      </div>
++    </div>
++  );
++};
+diff --git a/client/src/components/realtime/AudiencePreview.jsx b/client/src/components/realtime/AudiencePreview.jsx
+new file mode 100644
+index 0000000..d84d7fb
+--- /dev/null
++++ b/client/src/components/realtime/AudiencePreview.jsx
+@@ -0,0 +1,40 @@
++import React from 'react';
++
++export const AudiencePreview = ({ audience }) => {
++  const displayLimit = 16;
++  const displayed = audience.slice(0, displayLimit);
++  const remaining = audience.length - displayLimit;
++
++  return (
++    <div className="card w-full mt-4">
++      <h3 className="card-title text-lg mb-4 text-[var(--success)]">Active Participants</h3>
++      {audience.length === 0 ? (
++        <p className="text-[var(--text-muted)] text-sm">No one is here yet...</p>
++      ) : (
++        <div className="flex flex-wrap gap-3">
++          {displayed.map((user) => (
++            <div key={user.id} className="relative group cursor-pointer transition-transform hover:scale-110">
++              <img 
++                src={user.avatar} 
++                alt={user.name} 
++                className={`w-12 h-12 rounded-full border-2 ${user.isSimulated ? 'border-[#00cec9]' : 'border-[#6c5ce7]'}`} 
++              />
++              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-[var(--bg-primary)] rounded-full"></div>
++              
++              {/* Tooltip */}
++              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
++                {user.name}
++              </div>
++            </div>
++          ))}
++          
++          {remaining > 0 && (
++            <div className="w-12 h-12 rounded-full border-2 border-[var(--border-subtle)] bg-[var(--bg-glass)] flex items-center justify-center text-sm font-bold text-[var(--text-secondary)]">
++              +{remaining}
++            </div>
++          )}
++        </div>
++      )}
++    </div>
++  );
++};
+diff --git a/client/src/components/realtime/BroadcastAnimation.jsx b/client/src/components/realtime/BroadcastAnimation.jsx
+new file mode 100644
+index 0000000..9d11241
+--- /dev/null
++++ b/client/src/components/realtime/BroadcastAnimation.jsx
+@@ -0,0 +1,26 @@
++import React from 'react';
++
++export const BroadcastAnimation = ({ isLive }) => {
++  if (!isLive) return null;
++
++  return (
++    <div className="flex items-center justify-center p-4">
++      <div className="relative flex items-center justify-center w-32 h-32">
++        {/* Waves */}
++        <div className="absolute inset-0 rounded-full border-2 border-[var(--accent-primary)] animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] opacity-75"></div>
++        <div className="absolute inset-4 rounded-full border-2 border-[var(--success)] animate-[ping_2.5s_cubic-bezier(0,0,0.2,1)_infinite] opacity-50 delay-150"></div>
++        
++        {/* Core */}
++        <div className="relative z-10 w-16 h-16 rounded-full bg-[var(--danger)] flex items-center justify-center shadow-[0_0_30px_rgba(255,107,107,0.6)]">
++          <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center animate-pulse">
++            <div className="w-4 h-4 bg-[var(--danger)] rounded-full"></div>
++          </div>
++        </div>
++        
++        <div className="absolute -bottom-8 font-bold text-[var(--danger)] tracking-widest uppercase text-sm animate-pulse">
++          LIVE
++        </div>
++      </div>
++    </div>
++  );
++};
+diff --git a/client/src/components/realtime/LiveAudienceMap.jsx b/client/src/components/realtime/LiveAudienceMap.jsx
+new file mode 100644
+index 0000000..3e3f9d3
+--- /dev/null
++++ b/client/src/components/realtime/LiveAudienceMap.jsx
+@@ -0,0 +1,66 @@
++import React, { useEffect, useState } from 'react';
++import { MapContainer, TileLayer, Marker, Popup, CircleMarker } from 'react-leaflet';
++import 'leaflet/dist/leaflet.css';
++
++// Fix for leaflet marker icons in React
++import L from 'leaflet';
++import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
++import markerIcon from 'leaflet/dist/images/marker-icon.png';
++import markerShadow from 'leaflet/dist/images/marker-shadow.png';
++
++delete L.Icon.Default.prototype._getIconUrl;
++L.Icon.Default.mergeOptions({
++  iconUrl: markerIcon,
++  iconRetinaUrl: markerIcon2x,
++  shadowUrl: markerShadow,
++});
++
++export const LiveAudienceMap = ({ audience }) => {
++  return (
++    <div className="w-full h-full min-h-[400px] rounded-xl overflow-hidden border border-[var(--border-subtle)] shadow-lg relative z-0">
++      <MapContainer 
++        center={[20, 0]} 
++        zoom={2} 
++        style={{ height: '100%', width: '100%', background: '#0a0a0f' }}
++        scrollWheelZoom={false}
++      >
++        <TileLayer
++          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
++          attribution='&copy; <a href="https://carto.com/">Carto</a>'
++        />
++        {audience.map((user) => {
++          if (user.lat && user.lng) {
++            return (
++              <CircleMarker
++                key={user.id}
++                center={[user.lat, user.lng]}
++                radius={6}
++                pathOptions={{ 
++                  color: user.isSimulated ? '#00cec9' : '#6c5ce7', 
++                  fillColor: user.isSimulated ? '#00cec9' : '#6c5ce7',
++                  fillOpacity: 0.7 
++                }}
++              >
++                <Popup className="dark-popup">
++                  <div className="flex items-center gap-2 p-1">
++                    <img src={user.avatar} alt={user.name} className="w-8 h-8 rounded-full" />
++                    <div>
++                      <p className="font-bold text-sm m-0">{user.name}</p>
++                      {user.isSimulated && <span className="text-xs text-[#00cec9]">Simulated</span>}
++                    </div>
++                  </div>
++                </Popup>
++              </CircleMarker>
++            );
++          }
++          return null;
++        })}
++      </MapContainer>
++      
++      <style>{`
++        .leaflet-popup-content-wrapper { background: var(--bg-card); color: white; border: 1px solid var(--border-subtle); backdrop-filter: blur(10px); }
++        .leaflet-popup-tip { background: var(--bg-card); }
++      `}</style>
++    </div>
++  );
++};
+diff --git a/client/src/components/realtime/SimulationToggle.jsx b/client/src/components/realtime/SimulationToggle.jsx
+new file mode 100644
+index 0000000..65a8934
+--- /dev/null
++++ b/client/src/components/realtime/SimulationToggle.jsx
+@@ -0,0 +1,53 @@
++import React, { useState } from 'react';
++
++export const SimulationToggle = ({ onToggle }) => {
++  const [isSimulating, setIsSimulating] = useState(false);
++  const [count, setCount] = useState(50);
++
++  const handleToggle = () => {
++    const newState = !isSimulating;
++    setIsSimulating(newState);
++    onToggle(newState, count);
++  };
++
++  return (
++    <div className="card w-full mt-4 bg-[var(--bg-card)] border border-[var(--border-subtle)] p-4 rounded-xl">
++      <div className="flex items-center justify-between mb-4">
++        <div>
++          <h3 className="text-lg font-semibold text-[var(--accent-primary)]">Simulation Mode</h3>
++          <p className="text-xs text-[var(--text-muted)] mt-1">Inject mock Socket.io events for stress testing.</p>
++        </div>
++        <div className="flex items-center">
++          <label className="relative inline-flex items-center cursor-pointer">
++            <input 
++              type="checkbox" 
++              className="sr-only peer" 
++              checked={isSimulating}
++              onChange={handleToggle}
++            />
++            <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--accent-primary)]"></div>
++          </label>
++        </div>
++      </div>
++      
++      {isSimulating && (
++        <div className="mt-3 animate-in">
++          <label className="block text-xs text-[var(--text-secondary)] mb-1">Simulated Users ({count})</label>
++          <input 
++            type="range" 
++            min="10" 
++            max="500" 
++            step="10"
++            value={count} 
++            onChange={(e) => {
++              const val = parseInt(e.target.value);
++              setCount(val);
++              onToggle(true, val);
++            }}
++            className="w-full accent-[var(--accent-primary)] h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
++          />
++        </div>
++      )}
++    </div>
++  );
++};
+diff --git a/client/src/components/realtime/index.js b/client/src/components/realtime/index.js
+new file mode 100644
+index 0000000..0312e1d
+--- /dev/null
++++ b/client/src/components/realtime/index.js
+@@ -0,0 +1,5 @@
++export { LiveAudienceMap } from './LiveAudienceMap';
++export { BroadcastAnimation } from './BroadcastAnimation';
++export { AnalyticsDashboard } from './AnalyticsDashboard';
++export { AudiencePreview } from './AudiencePreview';
++export { SimulationToggle } from './SimulationToggle';
+diff --git a/client/src/index.css b/client/src/index.css
+index 0e7b65a..b61b059 100644
+--- a/client/src/index.css
++++ b/client/src/index.css
+@@ -1,5 +1,8 @@
+-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
++@tailwind base;
++@tailwind components;
++@tailwind utilities;
+ 
++@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+ :root {
+   /* Color Palette */
+   --bg-primary: #0a0a0f;
+diff --git a/client/tailwind.config.js b/client/tailwind.config.js
+new file mode 100644
+index 0000000..dca8ba0
+--- /dev/null
++++ b/client/tailwind.config.js
+@@ -0,0 +1,11 @@
++/** @type {import('tailwindcss').Config} */
++export default {
++  content: [
++    "./index.html",
++    "./src/**/*.{js,ts,jsx,tsx}",
++  ],
++  theme: {
++    extend: {},
++  },
++  plugins: [],
++}
+diff --git a/project_report.md b/project_report.md
+new file mode 100644
+index 0000000..c03cb88
+--- /dev/null
++++ b/project_report.md
+@@ -0,0 +1,128 @@
++# Smart Broadcasting System (SmartCast)
++**Comprehensive Project Report**
++
++---
++
++## 1. Project Overview & Objective
++The **Smart Broadcasting System** is an AI-powered, real-time notification platform designed for university or corporate environments. Traditional broadcasting systems require administrators to manually filter databases to select target audiences. This system introduces an **Intelligence Layer** that allows administrators to type natural language messages (e.g., *"First-year AI&DS students interested in dance, please visit the auditorium"*). The AI automatically parses the message, extracts the target demographics, and routes the notification exclusively to matching users in real-time.
++
++---
++
++## 2. Technology Stack
++
++The project is built on a modernized **MERN Stack**:
++- **Frontend:** React.js (via Vite) for a blazing-fast SPA, vanilla CSS for highly customized, responsive, and animated UI design.
++- **Backend:** Node.js & Express.js, providing robust REST APIs.
++- **Database:** MongoDB Atlas, offering a scalable NoSQL database for flexible user profiles and real-time query matching.
++- **Real-Time Engine:** Socket.io for instant push notifications to active clients.
++- **AI Integration:** OpenAI API (GPT-4o/GPT-3.5) for Natural Language Processing and entity extraction.
++- **Validation:** Zod for strict schema validation on user inputs and AI outputs.
++
++---
++
++## 3. System Architecture & Data Flow
++
++The system consists of three main phases: Entity Extraction, Matching, and Dispatch.
++
++```mermaid
++sequenceDiagram
++    participant Admin (Frontend)
++    participant Server (Express)
++    participant Intelligence Layer (OpenAI)
++    participant Database (MongoDB)
++    participant Active Users (Socket.io)
++
++    Admin (Frontend)->>Server (Express): POST /api/broadcast (Natural Language Message)
++    Server (Express)->>Intelligence Layer (OpenAI): Request Entity Extraction (Prompt + Message)
++    Intelligence Layer (OpenAI)-->>Server (Express): JSON (Year, Dept, Location, Interests)
++    Server (Express)->>Server (Express): Zod Schema Validation (Defense in Depth)
++    Server (Express)->>Database (MongoDB): Query users matching extracted JSON
++    Database (MongoDB)-->>Server (Express): List of Matched Users
++    Server (Express)->>Database (MongoDB): Save Broadcast Record (Processing)
++    Server (Express)->>Active Users (Socket.io): Emit Real-Time Notification
++    Server (Express)->>Database (MongoDB): Update Broadcast Delivery Stats (Sent)
++    Server (Express)-->>Admin (Frontend): Success Response & Stats Summary
++```
++
++### Flowchart: Deployment Architecture
++
++```mermaid
++graph TD
++    A[End User / Admin] -->|HTTPS| B(Vercel Frontend)
++    B -->|REST API & WebSockets| C(Render Backend Web Service)
++    C <-->|Mongoose TCP| D[(MongoDB Atlas Cluster)]
++    C <-->|HTTPS| E[OpenAI API]
++    F[cron-job.org] -->|Ping every 14m| C
++```
++
++---
++
++## 4. Key Features & Implementation Details
++
++### A. The Intelligence Layer
++Using **OpenAI's API**, the backend interprets natural text and outputs a strictly typed JSON structure containing `year`, `department`, `interests`, `location`, and `urgency`. If the AI fails or hits a rate limit, the system gracefully degrades to a local regex-based fallback extractor to ensure high availability.
++
++### B. Real-Time Dispatch & Feedback Loop
++- **Socket.io** enables instantaneous delivery of notifications.
++- **Relevance Feedback:** Users can vote 👍 (Relevant) or 👎 (Irrelevant) on notifications. This feeds into the **Analytics Dashboard**, displaying an "AI Accuracy %" to the administrator to track engagement and model precision.
++
++### C. Progressive Web App (PWA)
++The application includes a `manifest.json` and a Service Worker (`sw.js`). This allows users to install the app on mobile devices. When the app is in the background, incoming Socket events trigger native OS push notifications.
++
++---
++
++## 5. Security & Production Hardening
++
++Before deployment, the system underwent severe security hardening:
++
++1. **Authentication:** Implemented **JWT Refresh Token Rotation**. Access tokens (15-min life) are stored in JS memory, while Refresh tokens (7-day life) are stored in secure, `httpOnly` cookies to prevent XSS attacks.
++2. **Rate Limiting:** Granular rate limits using `express-rate-limit` (e.g., 5 requests/15 mins for login, 10 requests/min for broadcasts, 100 requests/15 mins for general APIs) to mitigate DDoS and brute-force attacks.
++3. **Validation & Sanitization:** 
++   - `helmet` secures HTTP headers.
++   - A custom NoSQL injection sanitizer ensures malicious queries are stripped before hitting MongoDB.
++   - `zod` guarantees payload structures, completely neutralizing malformed data crashes.
++4. **CORS Configuration:** Strictly locked down to the Vercel frontend domain.
++
++---
++
++## 6. Deployment Infrastructure
++
++### A. Vercel (Frontend)
++- **Repo Connection:** Automatically builds the React/Vite app on GitHub pushes.
++- **Configuration:** `vercel.json` ensures SPA (Single Page Application) routing rewrites all paths to `index.html`.
++- **Environment Variables:** `VITE_API_URL` and `VITE_SOCKET_URL` point to the Render backend.
++
++### B. Render (Backend)
++- **Web Service Engine:** Node.js runtime executing `server.js`.
++- **Environment Variables:** Securely injects DB connection strings, JWT secrets, and API keys.
++- **Cold Start Mitigation:** Render's free tier spins down servers after 15 minutes of inactivity. To prevent this, a scheduled task on **cron-job.org** sends an HTTP GET request to the `/api/health` endpoint every 14 minutes.
++
++### C. MongoDB Atlas (Database)
++- A cloud-hosted M0 Free Cluster provides high availability and automated backups.
++- Configured with `0.0.0.0/0` network access to allow Render's dynamic IP addresses to connect.
++
++---
++
++## 7. Environment Variables & API Keys Reference
++
++The system relies on securely managed environment variables. *Note: Actual keys must never be committed to version control.*
++
++| Variable Name | Purpose / Description | Platform |
++|---|---|---|
++| `MONGODB_URI` | The connection string for the Atlas Cluster. | Render |
++| `JWT_SECRET` | Cryptographic key to sign short-lived access tokens. | Render |
++| `JWT_REFRESH_SECRET` | Cryptographic key to sign long-lived refresh tokens. | Render |
++| `OPENAI_API_KEY` | Secret key provided by OpenAI for NLP entity extraction. | Render |
++| `CLIENT_URL` | The Vercel URL. Used to configure strict CORS policies. | Render |
++| `VITE_API_URL` | The Render URL appended with `/api`. Directs Axios requests. | Vercel |
++| `VITE_SOCKET_URL` | The base Render URL. Directs Socket.io connections. | Vercel |
++
++---
++
++## 8. Conclusion & Future Scope
++The Smart Broadcasting System successfully transitions static, manual notifications into a dynamic, AI-driven workflow. The production-ready architecture ensures it is secure, highly performant (Vite code-splitting), and scalable.
++
++**Future Enhancements:**
++- Integration with institutional SSO (Single Sign-On).
++- Using advanced geospatial queries (MongoDB `$near`) to target users dynamically moving around campus.
++- Web Push API integration for offline push notifications.
+diff --git a/server/socket/socketHandler.js b/server/socket/socketHandler.js
+index 687baef..debc5ee 100644
+--- a/server/socket/socketHandler.js
++++ b/server/socket/socketHandler.js
+@@ -1,26 +1,54 @@
+ const User = require('../models/User');
+ 
++const activeAudience = new Map();
++let simulationInterval = null;
++
+ const setupSocket = (io) => {
+   io.on('connection', (socket) => {
+     console.log(`Socket connected: ${socket.id}`);
+ 
+-    socket.on('authenticate', async (userId) => {
++    socket.on('authenticate', async (userData) => {
++      // userData can be userId string or object { id, name, avatar }
++      const id = typeof userData === 'string' ? userData : userData.id;
++      const name = userData.name || `User-${id.substring(0, 4)}`;
++      const avatar = userData.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${id}`;
++      
+       try {
+-        await User.findByIdAndUpdate(userId, { socketId: socket.id, isOnline: true });
+-        socket.userId = userId;
+-        console.log(`User ${userId} online on ${socket.id}`);
++        await User.findByIdAndUpdate(id, { socketId: socket.id, isOnline: true });
++        socket.userId = id;
++        
++        activeAudience.set(socket.id, {
++          id,
++          name,
++          avatar,
++          lat: 0,
++          lng: 0,
++          isSimulated: false,
++          joinedAt: Date.now()
++        });
++        
++        console.log(`User ${id} online on ${socket.id}`);
++        emitAudienceUpdate();
+       } catch (err) { console.error('Socket auth error:', err.message); }
+     });
+ 
+     socket.on('disconnect', async () => {
++      activeAudience.delete(socket.id);
+       if (socket.userId) {
+         try {
+           await User.findByIdAndUpdate(socket.userId, { socketId: null, isOnline: false });
+         } catch (err) { console.error('Disconnect error:', err.message); }
+       }
++      emitAudienceUpdate();
+     });
+ 
+     socket.on('update_location', async (data) => {
++      if (activeAudience.has(socket.id)) {
++        const user = activeAudience.get(socket.id);
++        user.lat = data.latitude;
++        user.lng = data.longitude;
++      }
++      
+       if (!socket.userId) return;
+       try {
+         await User.findByIdAndUpdate(socket.userId, {
+@@ -29,7 +57,77 @@ const setupSocket = (io) => {
+         });
+       } catch (err) { console.error('Location error:', err.message); }
+     });
++
++    // --- SIMULATION MODE ---
++    socket.on('toggle_simulation', (data) => {
++      const { enabled, count = 50 } = data;
++      if (enabled) {
++        startSimulation(count);
++      } else {
++        stopSimulation();
++      }
++    });
+   });
++
++  const emitAudienceUpdate = () => {
++    const audienceList = Array.from(activeAudience.values());
++    io.emit('audience_update', {
++      count: audienceList.length,
++      audience: audienceList
++    });
++  };
++
++  const startSimulation = (count) => {
++    if (simulationInterval) clearInterval(simulationInterval);
++    
++    // Clear previously simulated
++    for (const [key, val] of activeAudience.entries()) {
++      if (val.isSimulated) activeAudience.delete(key);
++    }
++    
++    // Generate static mock users
++    for(let i = 0; i < count; i++) {
++      const simId = `sim_${i}`;
++      activeAudience.set(simId, {
++        id: simId,
++        name: `SimUser ${i}`,
++        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=sim${i}`,
++        lat: 37.7749 + (Math.random() - 0.5) * 10, // Around US roughly
++        lng: -122.4194 + (Math.random() - 0.5) * 20,
++        isSimulated: true,
++        joinedAt: Date.now() - Math.random() * 10000
++      });
++    }
++
++    emitAudienceUpdate();
++    
++    // Interval to jitter their locations slightly
++    simulationInterval = setInterval(() => {
++      let changed = false;
++      for (const [key, user] of activeAudience.entries()) {
++        if (user.isSimulated) {
++          user.lat += (Math.random() - 0.5) * 0.1;
++          user.lng += (Math.random() - 0.5) * 0.1;
++          changed = true;
++        }
++      }
++      if(changed) emitAudienceUpdate();
++    }, 3000);
++  };
++
++  const stopSimulation = () => {
++    if (simulationInterval) {
++      clearInterval(simulationInterval);
++      simulationInterval = null;
++    }
++    for (const [key, val] of activeAudience.entries()) {
++      if (val.isSimulated) activeAudience.delete(key);
++    }
++    emitAudienceUpdate();
++  };
++
++  // Periodic broadcast of real audience data
++  setInterval(emitAudienceUpdate, 5000);
+ };
+ 
+ module.exports = setupSocket;
