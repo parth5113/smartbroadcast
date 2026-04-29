@@ -1394,3 +1394,134 @@ body {
     align-self: flex-end;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   ADMIN PANEL — Smart Composer & Feedback UI
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Textarea wrapper + char count (Spec #13) ── */
+.ad-textarea-wrap { position: relative; }
+.ad-char-count {
+  position: absolute; bottom: 0.6rem; right: 0.85rem;
+  font-size: 0.7rem; color: var(--text-muted); font-family: 'Inter', sans-serif;
+}
+
+/* ── Entity chips (Spec #1) ── */
+.ad-chips-row {
+  display: flex; flex-wrap: wrap; gap: 0.35rem;
+  margin: 0.6rem 0; align-items: center;
+}
+.ad-chip {
+  display: inline-flex; align-items: center;
+  padding: 0.2rem 0.6rem; border-radius: 16px;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3px;
+  border: 1px solid; animation: fadeInUp 0.25s ease both;
+}
+.ad-chip-year { background: rgba(108,92,231,0.12); color: var(--accent-secondary); border-color: rgba(108,92,231,0.3); }
+.ad-chip-dept { background: rgba(0,206,201,0.12); color: var(--success); border-color: rgba(0,206,201,0.3); }
+.ad-chip-interest { background: rgba(253,203,110,0.12); color: var(--warning); border-color: rgba(253,203,110,0.3); }
+.ad-chip-location { background: rgba(116,185,255,0.12); color: var(--info); border-color: rgba(116,185,255,0.3); }
+.ad-chip-cat { background: rgba(255,255,255,0.04); color: var(--text-secondary); }
+
+/* ── Text hints (Spec #10) ── */
+.ad-hint {
+  font-size: 0.78rem; padding: 0.45rem 0.7rem;
+  border-radius: var(--radius-sm); margin: 0.35rem 0;
+}
+.ad-hint-warn { background: rgba(253,203,110,0.08); color: var(--warning); border-left: 3px solid var(--warning); }
+.ad-hint-info { background: rgba(116,185,255,0.06); color: var(--info); border-left: 3px solid var(--info); }
+.ad-hint-success { background: rgba(0,206,201,0.06); color: var(--success); border-left: 3px solid var(--success); }
+
+/* ── Reach bar (Spec #1) ── */
+.ad-reach-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.55rem 0.75rem; margin: 0.5rem 0;
+  background: rgba(108,92,231,0.06); border: 1px solid rgba(108,92,231,0.15);
+  border-radius: var(--radius-sm); flex-wrap: wrap; gap: 0.5rem;
+}
+.ad-reach-left { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-secondary); }
+.ad-reach-pct { font-size: 0.72rem; color: var(--accent-secondary); background: rgba(108,92,231,0.1); padding: 0.15rem 0.5rem; border-radius: 12px; }
+
+/* ── Schedule row (Spec #7) ── */
+.ad-schedule-row {
+  display: flex; flex-direction: column; gap: 0.5rem; margin: 0.5rem 0;
+  padding: 0.75rem; background: rgba(0,206,201,0.04); border: 1px solid rgba(0,206,201,0.12); border-radius: var(--radius-sm);
+}
+.ad-peak-hint { font-size: 0.75rem; color: var(--success); display: flex; align-items: center; gap: 0.3rem; }
+
+/* ── A/B section (Spec #11) ── */
+.ad-ab-section { margin: 0.5rem 0; padding: 0.75rem; background: rgba(116,185,255,0.04); border: 1px solid rgba(116,185,255,0.12); border-radius: var(--radius-sm); }
+.ad-ab-comparison { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.6rem; flex-wrap: wrap; }
+.ad-ab-card {
+  flex: 1; display: flex; flex-direction: column; gap: 0.2rem; padding: 0.5rem 0.75rem;
+  background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  font-size: 0.78rem; color: var(--text-secondary); min-width: 90px;
+}
+.ad-ab-card strong { color: var(--text-primary); font-size: 0.9rem; }
+.ad-ab-vs { font-weight: 700; color: var(--text-muted); font-size: 0.75rem; }
+.ad-ab-insight { width: 100%; font-size: 0.75rem; color: var(--accent-secondary); margin-top: 0.25rem; }
+
+/* ── Preview as Student (Spec #5) ── */
+.ad-preview-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0; }
+.ad-preview-select { padding: 0.4rem 0.75rem !important; font-size: 0.8rem !important; flex: 1; max-width: 220px; }
+.ad-preview-badge {
+  font-size: 0.75rem; padding: 0.25rem 0.65rem; border-radius: 12px;
+  background: var(--bg-glass); border: 1px solid var(--border-subtle);
+}
+
+/* ── Charts row (Spec #3) ── */
+.ad-charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.ad-chart-box { min-height: 180px; }
+.ad-chart-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+
+/* ── Confirm modal (Spec #12) ── */
+.ad-modal-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center; padding: 1rem;
+}
+.ad-modal {
+  background: var(--gradient-card); border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl); padding: 2rem; max-width: 420px; width: 100%;
+  text-align: center; box-shadow: var(--shadow-lg);
+}
+.ad-modal-icon { color: var(--warning); margin-bottom: 0.75rem; }
+.ad-modal h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.ad-modal p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+.ad-modal-preview {
+  font-size: 0.8rem; color: var(--text-muted); font-style: italic;
+  padding: 0.5rem 0.75rem; background: var(--bg-glass); border-radius: var(--radius-sm);
+  margin-bottom: 1rem; text-align: left;
+}
+.ad-modal-actions { display: flex; gap: 0.75rem; justify-content: center; }
+
+/* ── Undo bar (Spec #12) ── */
+.ad-undo-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.65rem 1rem; margin-bottom: 1rem;
+  background: rgba(0,206,201,0.08); border: 1px solid rgba(0,206,201,0.2);
+  border-radius: var(--radius-sm); font-size: 0.82rem; color: var(--success);
+}
+
+/* ── History detail & feedback (Spec #6, #9) ── */
+.ad-history-detail { margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--border-subtle); }
+.broadcast-item.ad-expanded { border-color: var(--border-glass); background: var(--bg-glass-hover); }
+.ad-feedback-row { margin: 0.4rem 0; }
+.ad-feedback-bar {
+  display: flex; height: 22px; border-radius: 6px; overflow: hidden;
+  background: var(--bg-glass); border: 1px solid var(--border-subtle);
+}
+.ad-fb-fill {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; font-weight: 600; transition: width 0.4s ease;
+}
+.ad-fb-rel { background: rgba(0,206,201,0.3); color: var(--success); }
+.ad-fb-irrel { background: rgba(255,107,107,0.3); color: var(--danger); }
+
+@media (max-width: 768px) {
+  .ad-charts-row { grid-template-columns: 1fr; }
+  .ad-ab-comparison { flex-direction: column; }
+  .ad-preview-row { flex-direction: column; align-items: stretch; }
+  .ad-preview-select { max-width: 100% !important; }
+}
+
